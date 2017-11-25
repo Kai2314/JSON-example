@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+reference :  https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects/JSON
+-->
+<html>
+    <head>
+        
+        <title>InnBooking TEST</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Faster+One" rel="stylesheet"> 
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header>
+</header>
+
+<section>
+</section>
+    <script>
+        
+    var header = document.querySelector('header');
+    var section = document.querySelector('section');
+    var requestURL = "https://raw.githubusercontent.com/Kai2314/JSON-example/master/bookingInn.json";
+    var request = new XMLHttpRequest();
+    request.open('GET',requestURL);
+    request.responseType = 'json';
+    request.send();
+    
+    request.onload = function(){
+        var Inn = request.response;
+        populateHeader(Inn);
+        showTheInns(Inn);
+    };
+    
+    function populateHeader(jsonObj){
+        var myH1 = document.createElement('h1');
+        myH1.textContent = jsonObj['StoreName'];
+        header.appendChild(myH1);
+        
+        var myWeb = document.createElement('p');
+        myWeb.textContent = 'url : '+jsonObj['url'];
+        header.appendChild(myWeb);
+    }
+    
+    function showTheInns(jsonObj){
+        var Inns = jsonObj['hotels'];
+        
+        for(i=0;i< Inns.length;i++){
+            var myArticle = document.createElement('article');
+            var myH2 = document.createElement('h2');
+            var myPara1 = document.createElement('p');
+            var myPara2 = document.createElement('p');
+            var myPara3 = document.createElement('p');
+            var myList = document.createElement('ul');
+            
+            myH2.textContent = Inns[i].name;
+            myPara1.textContent = 'Hotel Owner :'+Inns[i].owner;
+            myPara2.textContent = 'Star : '+Inns[i].star;
+            myPara3.textContent = 'Description : ';
+            
+            var describes = Inns[i].description;
+            for(j=0;j<describes.length;j++){
+                var listItem = document.createElement('li');
+                listItem.textContent = describes[j];
+                myList.appendChild(listItem);
+            }
+            myArticle.appendChild(myH2);
+            myArticle.appendChild(myPara1);
+            myArticle.appendChild(myPara2);
+            myArticle.appendChild(myPara3);
+            myArticle.appendChild(myList);
+            
+            section.appendChild(myArticle);
+        }
+        
+    }
+    </script>
+    
+    </body>
+</html>
