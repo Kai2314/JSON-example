@@ -1,0 +1,38 @@
+{
+	"StoreName": "iBookingInn",
+	"url": "www.hotel.com",
+	"formed": 2017,
+	"secretBase": "tower",
+	"active": true,
+	"hotels": [{
+			"name": "The Pilot Inn",
+			"star": 8.6,
+			"owner": "Toby",
+			"description": [
+				"Location was great",
+				"Wonderful staff",
+				"Execllent the foods"
+			]
+		},
+		{
+			"name": "The Sun Inn",
+			"star": 8.0,
+			"owner": "Kai",
+			"description": [
+				"Location was great",
+				"have a large parking lot",
+				"very cheap"
+			]
+		},
+		{
+			"name": "The Park Ave South",
+			"star": 7.8,
+			"owner": "obama",
+			"description": [
+				"Location was great",
+				"Wonderful staff",
+				"beautiful house"
+			]
+		}
+	]
+}
